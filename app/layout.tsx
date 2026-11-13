@@ -22,16 +22,13 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#000000" },
-  ],
+  themeColor: "#000000",
 };
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
   const { locale, dict } = await getI18n();
   return (
-    <html lang={locale} className={`${inter.variable} h-full`}>
+    <html lang={locale} className={`${inter.variable} dark h-full`}>
       <body className="min-h-full">
         <I18nProvider locale={locale} dict={dict}>
           {children}
