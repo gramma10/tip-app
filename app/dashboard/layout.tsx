@@ -4,6 +4,7 @@ import { BrandLockup } from "@/components/brand";
 import { LanguageToggle } from "@/components/language-toggle";
 import { MotionProvider } from "@/components/motion-provider";
 import { SideBar, TabBar, type TabItem } from "@/components/tab-bar";
+import { TabSlide } from "@/components/tab-slide";
 import { requireMember } from "@/lib/auth/session";
 import { repo } from "@/lib/data";
 import { getI18n } from "@/lib/i18n/server";
@@ -42,9 +43,11 @@ export default async function DashboardLayout({ children }: LayoutProps<"/dashbo
           </div>
         }
       />
-      <div className="min-w-0 flex-1 pb-28 lg:pb-12">
+      <div className="min-w-0 flex-1 overflow-x-clip pb-28 lg:pb-12">
         <div className="mx-auto max-w-5xl lg:px-6 lg:pt-4">
-          <MotionProvider>{children}</MotionProvider>
+          <MotionProvider>
+            <TabSlide hrefs={items.map((item) => item.href)}>{children}</TabSlide>
+          </MotionProvider>
         </div>
       </div>
       <TabBar items={items} className="lg:hidden" />

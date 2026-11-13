@@ -37,8 +37,8 @@ export function Segmented<T extends string>({
             {active && (
               <m.span
                 layoutId={`seg-${id}`}
-                className="absolute inset-0 rounded-[8px] bg-surface shadow-[0_3px_8px_rgba(0,0,0,0.12),0_3px_1px_rgba(0,0,0,0.04)] dark:bg-surface-raised"
-                transition={{ type: "spring", stiffness: 500, damping: 38 }}
+                className="glass-thumb absolute inset-0 rounded-[8px]"
+                transition={{ type: "spring", stiffness: 380, damping: 32 }}
               />
             )}
             <span className="relative">{o.label}</span>

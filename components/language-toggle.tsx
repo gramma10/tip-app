@@ -22,8 +22,8 @@ export function LanguageToggle({ className, tone = "default" }: { className?: st
       disabled={pending}
       aria-label={next === "el" ? "Ελληνικά" : "English"}
       className={cn(
-        "h-8 rounded-full px-3 text-footnote font-semibold transition active:scale-95",
-        tone === "onColor" ? "bg-white/18 text-white backdrop-blur-md" : "bg-fill text-ink",
+        "h-8 rounded-full px-3 text-footnote font-semibold transition hover:-translate-y-0.5 active:scale-95",
+        tone === "onColor" ? "bg-white/18 text-white backdrop-blur-md" : "glass-button text-ink",
         className,
       )}
     >

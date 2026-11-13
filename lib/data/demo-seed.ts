@@ -36,45 +36,45 @@ function pick<T>(rand: () => number, items: readonly (readonly [T, number])[]): 
 const COMMENTS: Record<"high" | "mid" | "low", string[]> = {
   high: [
     "Super friendly and fast, thank you!",
-    "Best freddo espresso we had in Greece",
+    "Our room was spotless every single day",
     "Πολύ ευγενική εξυπηρέτηση!",
     "Τέλεια ατμόσφαιρα και πάντα με χαμόγελο",
     "Remembered our order from yesterday",
-    "Great tips for dinner in town",
+    "Great tips for dinner in town, booked everything for us",
     "Άψογοι, θα ξαναέρθουμε σίγουρα",
     "Lovely service at sunset",
     "Made our kids feel so welcome",
     "The cocktails were perfect",
     "Γρήγοροι και πολύ φιλικοί",
-    "Felt like regulars on our first day",
+    "Early check-in sorted in two minutes, thank you",
   ],
   mid: [
-    "Good service, a bit slow at peak time",
+    "Good service, a bit slow at check-in",
     "Nice, drinks came quickly",
     "Καλή εξυπηρέτηση, λίγη αναμονή",
-    "Friendly, but it took a while to get the menu",
+    "Friendly, but the room was ready a little late",
   ],
   low: [
-    "We waited 20 minutes for the bill",
+    "We waited 20 minutes at the pool bar",
     "Our order came wrong twice",
     "Αργή εξυπηρέτηση σήμερα",
-    "Felt rushed when we asked about the menu",
+    "Towels were not changed when we asked",
     "Η παραγγελία ήρθε κρύα",
   ],
 };
 
 const MANAGER_MESSAGES = [
   "The sunbed area wasn't cleaned when we arrived.",
-  "We asked twice for water and it never came.",
+  "We asked twice for extra pillows and they never came.",
   "Δεν μας ενημέρωσαν ότι η κουζίνα είχε κλείσει.",
 ];
 
 const STAFF_SPEC = [
-  { id: "s_maria", name: "Maria", role: "Floor", color: "#B83280", weight: 1.3, quality: 0.99 },
-  { id: "s_nikos", name: "Nikos", role: "Bar", color: "#2B6CB0", weight: 1.1, quality: 0.9 },
-  { id: "s_eleni", name: "Eleni", role: "Floor", color: "#0F766E", weight: 1.0, quality: 0.82 },
-  { id: "s_giorgos", name: "Giorgos", role: "Floor", color: "#6B46C1", weight: 0.8, quality: 0.6 },
-  { id: "s_sofia", name: "Sofia", role: "Host", color: "#B7791F", weight: 0.6, quality: 0.76 },
+  { id: "s_maria", name: "Maria", role: "Housekeeping", color: "#B83280", weight: 1.3, quality: 0.99 },
+  { id: "s_nikos", name: "Nikos", role: "Pool Bar", color: "#2B6CB0", weight: 1.1, quality: 0.9 },
+  { id: "s_eleni", name: "Eleni", role: "Reception", color: "#0F766E", weight: 1.0, quality: 0.82 },
+  { id: "s_giorgos", name: "Giorgos", role: "Restaurant", color: "#6B46C1", weight: 0.8, quality: 0.6 },
+  { id: "s_sofia", name: "Sofia", role: "Concierge", color: "#B7791F", weight: 0.6, quality: 0.76 },
 ] as const;
 
 const HOURS: readonly (readonly [number, number])[] = [
@@ -93,7 +93,7 @@ export function createDemoDb(now = new Date()): DemoDb {
 
   const venue: Venue = {
     id: DEMO_VENUE_ID,
-    name: "Thalassa Beach Bar",
+    name: "Thalassa Beach Hotel",
     city: "Naxos",
     accentColor: "#0A66FF",
     googlePlaceId: "ChIJN1t_tDeuEmsRUsoyG83frY4",
@@ -125,7 +125,7 @@ export function createDemoDb(now = new Date()): DemoDb {
       venueId: venue.id,
       userId: "u_dimitris",
       displayName: "Dimitris",
-      roleLabel: "Bar",
+      roleLabel: "Pool Bar",
       photoUrl: null,
       color: "#C05621",
       stripeAccountId: null,
@@ -139,7 +139,7 @@ export function createDemoDb(now = new Date()): DemoDb {
       venueId: venue.id,
       userId: null,
       displayName: "Katerina",
-      roleLabel: "Floor",
+      roleLabel: "Housekeeping",
       photoUrl: null,
       color: "#2F855A",
       stripeAccountId: null,
@@ -163,7 +163,8 @@ export function createDemoDb(now = new Date()): DemoDb {
   const cards: Card[] = [
     ...STAFF_SPEC.map((s) => card(`c_${s.id.slice(2)}`, s.id.slice(2), `${s.name}'s card`, "staff", s.id)),
     card("c_dimitris", "dimitris", "Dimitris's card", "staff", "s_dimitris"),
-    card("c_bar", "bar", "Bar counter", "venue", null),
+    card("c_bar", "bar", "Pool bar", "venue", null),
+    card("c_room204", "room-204", "Room 204", "venue", null),
     card("c_table7", "table-7", "Table 7", "venue", null),
     card("c_spare", "spare-1", "Spare card", "staff", null),
   ];

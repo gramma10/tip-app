@@ -9,6 +9,8 @@ export const env = {
   stripePublishableKey: process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
   stripeWebhookSecret: process.env.STRIPE_WEBHOOK_SECRET,
   tokenSecret: process.env.TIP_TOKEN_SECRET ?? "dev-only-insecure-secret",
+  /** Where "Reserve a pilot spot" goes (e.g. a wa.me link or a booking page). The button is hidden when unset. */
+  pilotUrl: process.env.NEXT_PUBLIC_PILOT_URL,
   takeRate: Number(process.env.PLATFORM_TAKE_RATE ?? "0.04"),
 };
 
